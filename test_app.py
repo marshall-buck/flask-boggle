@@ -40,3 +40,6 @@ class BoggleAppTestCase(TestCase):
             self.assertTrue(isinstance(json["board"], list))
             self.assertTrue(isinstance(json["board"][0], list))
             self.assertIn(json["gameId"], games)
+
+
+# make own board to test words, after
