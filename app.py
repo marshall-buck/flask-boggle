@@ -26,4 +26,12 @@ def new_game():
     game = BoggleGame()
     games[game_id] = game
 
-    return {"gameId": "need-real-id", "board": "need-real-board"}
+    return jsonify({"gameId": game_id, "board": game.board})
+
+
+"""
+1. AJAX post request from start button
+    post("/api/new-game") > runs new game
+2. return JSON: {game_id, board}
+
+"""

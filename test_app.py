@@ -23,12 +23,24 @@ class BoggleAppTestCase(TestCase):
 
         with self.client as client:
             response = client.get('/')
-            ...
+            html = response.get_data(as_text=True)
+
             # test that you're getting a template
+            self.assertEqual(response.status_code, 200)
+            self.assertIn('<!-- THIS IS THE HOMEPAGE -->', html)
 
     def test_api_new_game(self):
         """Test starting a new game."""
 
         with self.client as client:
-            ...
+            response = client.post('/api/new-game')
+            json = response.get_json()
+
+            # gameId_1 = games.get(json["gameId"])
+            gameId_1 = games.keys()[]
+            breakpoint()
+
             # write a test for this route
+            self.assertEqual(json["gameId"], gameId_1)
+
+
