@@ -42,4 +42,41 @@ class BoggleAppTestCase(TestCase):
             self.assertIn(json["gameId"], games)
 
 
+    def test_score_word(self):
+        """Test if the word is legal"""
+
+        with self.client as client:
+           game =
+
+            response = client.post('/api/score-word', json={"word": "CAT", "gameId": "123"})
+            json_response = response.get_json()
+            breakpoint()
+            self.assertEqual({"result": "ok"}, json_response)
+
+            games["gameId"] = [["C", "A", "T", "X", "X"],
+                        ["T", "A", "T", "X", "X"],
+                        ["P", "A", "T", "X", "X"]
+                        ["P", "A", "T", "X", "X"]
+                        ["P", "A", "T", "X", "X"]]
+        # with self.client as client:
+        #     response = client.post('/api/score-word', json={"word": "ZZZ", "gameId": "123"})
+        #     self.assertEqual({"result": "not-word"}, response.get_json())
+
+        # with self.client as client:
+        #     response = client.post('/api/score-word', json={"word": "FAT", "gameId": "123"})
+
+        #     self.assertEqual({"result": "not-on-board"}, response.get_json())
+
+
+
+        #change board in games object
+
+            """ checks if word is legal
+                returns json
+                    if not a word:  {result: "not-word"}
+                    if not on board:  {result: "not-on-board"}
+                    if a valid word:  {result: "ok"}
+            """
+
+
 # make own board to test words, after
